@@ -1,12 +1,12 @@
-import BaseController from './BaseController';
-import QuizService from '../service/QuizService';
-import QuizRepository from '../repository/QuizRepository';
-import { IQuiz } from '../model/Quiz';
+import BaseController from "./BaseController";
+import QuizService from "../service/QuizService";
+import QuizRepository from "../repository/QuizRepository";
+import { IQuiz } from "../model/Quiz";
 
 class QuizController extends BaseController<IQuiz> {
   constructor(service: QuizService) {
     super(service);
-    this.create = this.create.bind(this);
+    this.createQuiz = this.createQuiz.bind(this);
   }
   async createQuiz(req: any, res: any) {
     const data = {

@@ -1,6 +1,9 @@
-import { Model, Document, FilterQuery, UpdateQuery, SortOrder } from 'mongoose';
+import { Model, Document, FilterQuery, UpdateQuery, SortOrder } from "mongoose";
 export interface FindAllOptions {
-  selectionObject?: string | string[] | Record<string, number | boolean | object>;
+  selectionObject?:
+    | string
+    | string[]
+    | Record<string, number | boolean | object>;
   sortObject?: object;
   pageNumber?: number;
   limitNumber?: number;
@@ -17,18 +20,23 @@ class BaseRepository<T extends Document> {
     return newData.save();
   }
   async findOne(findObject: FilterQuery<T>): Promise<T | null> {
-    return this.model.findOne(findObject).populate({ path: 'createdBy', select: '' }).exec();
+    return this.model.findOne(findObject).exec();
   }
 
   async findAll(
     findObject: FilterQuery<T> = {},
     options: FindAllOptions = {},
     populateObject: { path: string; select: string } = {
-      path: '',
-      select: '',
+      path: "",
+      select: "",
     }
   ) {
-    const { selectionObject = {}, sortObject = {}, pageNumber = 1, limitNumber = 10 } = options;
+    const {
+      selectionObject = {},
+      sortObject = {},
+      pageNumber = 1,
+      limitNumber = 10,
+    } = options;
 
     const results = await this.model
       .find(findObject)
@@ -38,7 +46,12 @@ class BaseRepository<T extends Document> {
       })
       .lean()
       .sort(
-        sortObject as string | { [key: string]: SortOrder | { $meta: any } } | [string, SortOrder][] | null | undefined
+        sortObject as
+          | string
+          | { [key: string]: SortOrder | { $meta: any } }
+          | [string, SortOrder][]
+          | null
+          | undefined
       )
       .select(selectionObject)
       .limit(limitNumber)
@@ -50,8 +63,8 @@ class BaseRepository<T extends Document> {
     findObject: FilterQuery<T>,
     updatedData: UpdateQuery<T>,
     populateObject: { path: string; select: string } = {
-      path: '',
-      select: '',
+      path: "",
+      select: "",
     }
   ) {
     return this.model

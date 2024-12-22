@@ -29,6 +29,8 @@ const corsMiddleware = async (
     }
 
     // Validate x-app-token for API routes
+    console.log("req.url", req.headers["x-app-token"]);
+
     if (
       req.url.startsWith("/api") &&
       req.headers["x-app-token"] === "anyware-task"
