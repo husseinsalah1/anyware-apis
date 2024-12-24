@@ -51,17 +51,21 @@ Anyware-APIs is a web application designed to facilitate quizzes and announcemen
 
 - **API Documentation:**
 
-  - [API Endpoints](#api-endpoints)
   - User Routes:
     - /api/v1/user/auth/register
     - /api/v1/user/auth/login
   - Quiz Routes:
     - /api/v1/quiz/create
-    - /api/v1/quiz/get?\_id={\_id}
     - /api/v1/quiz/list
+    - /api/v1/quiz/get?\_id={\_id}
     - /api/v1/quiz/update?\_id={\_id}
     - /api/v1/quiz/delete?\_id={\_id}
-  - Announcement Routes: - /api/v1/announcement/create - /api/v1/announcement/get?\_id={\_id} - /api/v1/announcement/list - /api/v1/announcement/update?\_id={\_id} - /api/v1/announcement/delete?\_id={\_id}
+  - Announcement Routes:
+    - /api/v1/announcement/create
+    - /api/v1/announcement/list
+    - /api/v1/announcement/get?\_id={\_id}
+    - /api/v1/announcement/update?\_id={\_id}
+    - /api/v1/announcement/delete?\_id={\_id}
 
 - **PostMan Collection:**
 
