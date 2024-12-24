@@ -6,11 +6,14 @@ export interface IAnnouncement extends Document {
   createdBy: Schema.Types.ObjectId;
 }
 
-const announcementSchema = new Schema<IAnnouncement>({
-  title: { type: String, required: true },
-  description: { type: String, required: true },
-  createdBy: { type: Schema.Types.ObjectId, ref: "users", required: true },
-});
+const announcementSchema = new Schema<IAnnouncement>(
+  {
+    title: { type: String, required: true },
+    description: { type: String, required: true },
+    createdBy: { type: Schema.Types.ObjectId, ref: "users", required: true },
+  },
+  { timestamps: true }
+);
 
 export const announcementModel = model<IAnnouncement>(
   "announcements",

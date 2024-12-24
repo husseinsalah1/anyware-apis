@@ -1,5 +1,5 @@
-import { IQuiz, quizModel } from '../model/Quiz';
-import BaseRepository from './BaseRepository';
+import { IQuiz, quizModel } from "../model/Quiz";
+import BaseRepository from "./BaseRepository";
 
 class QuizRepository extends BaseRepository<IQuiz> {
   constructor() {

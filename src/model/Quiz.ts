@@ -14,20 +14,23 @@ export interface IQuiz extends Document {
   }[];
 }
 
-const quizSchema = new Schema<IQuiz>({
-  title: { type: String, required: true },
-  description: { type: String, required: true },
-  subject: { type: String, required: true },
-  semester: { type: String, required: true },
-  totalMarks: { type: Number, required: true },
-  createdBy: { type: Schema.Types.ObjectId, ref: "users", required: true },
-  questions: [
-    {
-      question: { type: String, required: true },
-      options: { type: [String], required: true },
-      correctAnswer: { type: String, required: true },
-    },
-  ],
-});
+const quizSchema = new Schema<IQuiz>(
+  {
+    title: { type: String, required: true },
+    description: { type: String, required: true },
+    subject: { type: String, required: true },
+    semester: { type: String, required: true },
+    totalMarks: { type: Number, required: true },
+    createdBy: { type: Schema.Types.ObjectId, ref: "users", required: true },
+    questions: [
+      {
+        question: { type: String, required: true },
+        options: { type: [String], required: true },
+        correctAnswer: { type: String, required: true },
+      },
+    ],
+  },
+  { timestamps: true }
+);
 
 export const quizModel = model<IQuiz>("quizzes", quizSchema);

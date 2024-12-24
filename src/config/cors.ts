@@ -20,7 +20,7 @@ const corsMiddleware = async (
     // Handle OPTIONS requests
     if (req.method === "OPTIONS") {
       res.header("Access-Control-Allow-Methods", allowedMethods.join(","));
-      return res.status(200).json({});
+      return next(res.status(200).json({}));
     }
 
     // Allow access to the root route
@@ -40,9 +40,9 @@ const corsMiddleware = async (
 
     // Respond with forbidden for API routes without valid token
     if (req.url.startsWith("/api")) {
-      return res
-        .status(403)
-        .json({ success: false, error: "Forbidden", code: 403 });
+      return next(
+        res.status(403).json({ success: false, error: "Forbidden", code: 403 })
+      );
     }
 
     // Allow all other routes
@@ -50,11 +50,13 @@ const corsMiddleware = async (
     return next();
   } catch (err) {
     console.log(`err.message`, (err as Error).message);
-    return res.status(500).json({
-      success: false,
-      error: "Internal server error",
-      code: 500,
-    });
+    return next(
+      res.status(500).json({
+        success: false,
+        error: "Internal server error",
+        code: 500,
+      })
+    );
   }
 };
 
