@@ -61,9 +61,10 @@ Anyware-APIs is a web application designed to facilitate quizzes and announcemen
     - /api/v1/quiz/list
     - /api/v1/quiz/update?\_id={\_id}
     - /api/v1/quiz/delete?\_id={\_id}
-  - Announcement Routes:
-    - /api/v1/announcement/create
-    - /api/v1/announcement/get?\_id={\_id}
-    - /api/v1/announcement/list
-    - /api/v1/announcement/update?\_id={\_id}
-    - /api/v1/announcement/delete?\_id={\_id}
+  - Announcement Routes: - /api/v1/announcement/create - /api/v1/announcement/get?\_id={\_id} - /api/v1/announcement/list - /api/v1/announcement/update?\_id={\_id} - /api/v1/announcement/delete?\_id={\_id}
+
+- **PostMan Collection:**
+
+  -You should to add the following headers to the postman collection:
+
+  - x-app-token : `anyware-task`
